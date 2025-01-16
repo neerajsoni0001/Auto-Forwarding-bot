@@ -2,7 +2,7 @@ from telethon import TelegramClient, events
 from env import *
 from db import *
 # Create the Telethon client
-bot = TelegramClient("message_forwarder_PROD", API_ID, API_HASH).start(bot_token=BOT_TOKEN)
+bot = TelegramClient("MSG_PROD", API_ID, API_HASH).start(bot_token=BOT_TOKEN)
 
 @bot.on(events.NewMessage(pattern="/start"))
 async def handle_start(event):
