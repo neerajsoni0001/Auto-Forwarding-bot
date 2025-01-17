@@ -173,7 +173,7 @@ def image_status(new_status):
         if result.modified_count > 0:
             return f"Successfully updated photo status to '{new_status}'"
         else:
-            return f"No changes made. Either the document doesn't exist or the status is already '{new_status}'."
+            return f"No changes made. The status is already '{new_status}'."
     except Exception as e:
         return f"Error Occurred: {e}"
     
@@ -434,6 +434,20 @@ def get_output_username():
 
         if result:
             return result.get("output_username")  # Use .get() on the document (dictionary)
+        else:
+            return "No document found with the specified ID."
+    except Exception as e:
+        return f"Error Occurred: {e}"
+
+
+def get_current_status():
+    try:
+        result = collection.find_one({
+            "_id": ObjectId("6783cc43d9fed44719153b4d")
+        })
+
+        if result:
+            return result.get("status")
         else:
             return "No document found with the specified ID."
     except Exception as e:
