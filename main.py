@@ -46,7 +46,7 @@ async def handle_listdestination_event(event):
     await event.respond(f"All Destination Channels are: {destinations}")
 
 
-@bot.on(events.NewMessage(pattern=r"^/addsource\s+(@\w+)$"))
+@bot.on(events.NewMessage(pattern = r"^/addsource\s+t\.me/(\w+)$"))
 async def handle_addsource_event(event):
     source = event.pattern_match.group(1)
     if source:
@@ -57,7 +57,7 @@ async def handle_addsource_event(event):
 
 
 
-@bot.on(events.NewMessage(pattern=r"^\/removesource\s+(@\w+)$"))
+@bot.on(events.NewMessage(pattern = r"^/removesource\s+t\.me/(\w+)$"))
 async def handle_removesource_event(event):
     source_to_remove = event.pattern_match.group(1)
     if source_to_remove:
@@ -68,14 +68,14 @@ async def handle_removesource_event(event):
 
 
 
-@bot.on(events.NewMessage(pattern=r"^/adddestination\s+(@\w+)$"))
+@bot.on(events.NewMessage(pattern = r"^/adddestination\s+t\.me/(\w+)$"))
 async def handle_adddestination_event(event):
     destination = event.pattern_match.group(1)
     result = add_destination(destination)
     await event.respond(result)
 
 
-@bot.on(events.NewMessage(pattern=r"^\/removedestination\s+(@\w+)$"))
+@bot.on(events.NewMessage(pattern = r"^/removedestination\s+t\.me/(\w+)$"))
 async def handle_removedestination_event(event):
     destination_to_remove = event.pattern_match.group(1)
     if destination_to_remove:
